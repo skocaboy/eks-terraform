@@ -7,40 +7,27 @@ This repository contains the infrastructure as code using Terraform for provisio
 The FastTrack-Terraform project is structured to support multiple clients across two main environments: staging and production. Each environment is capable of handling specific configurations for each client, ensuring isolation and customization as required.
 
 ## Directory Structure
-📦FASTTRACK-TERRAFORM 
-┣ 📂environments 
-┃ ┣ 📂production 
-┃ ┃ ┣ 📂karpenter 
-┃ ┃ ┃ ┣ 📜client1-karpenter.yaml 
-┃ ┃ ┃ ┗ 📜client2-karpenter.yaml 
-┃ ┃ ┣ 📜backend.tf 
-┃ ┃ ┣ 📜client1.tfvars 
-┃ ┃ ┣ 📜client2.tfvars 
-┃ ┃ ┣ 📜main.tf 
-┃ ┃ ┣ 📜outputs.tf 
-┃ ┃ ┗ 📜variables.tf 
-┃ ┗ 📂staging 
-┃ ┃ ┣ 📂karpenter 
-┃ ┃ ┃ ┣ 📜client1-karpenter.yaml 
-┃ ┃ ┃ ┗ 📜client2-karpenter.yaml 
-┃ ┃ ┣ 📜backend.tf 
-┃ ┃ ┣ 📜client1.tfvars 
-┃ ┃ ┣ 📜client2.tfvars 
-┃ ┃ ┣ 📜main.tf 
-┃ ┃ ┣ 📜outputs.tf 
-┃ ┃ ┗ 📜variables.tf 
-┣ 📂modules 
-┃ ┣ 📂alb 
-┃ ┣ 📂cloudwatch 
-┃ ┣ 📂eks 
-┃ ┣ 📂elasticache 
-┃ ┣ 📂monitoring 
-┃ ┣ 📂opensearch 
-┃ ┣ 📂rds 
-┃ ┣ 📂s3 
-┃ ┗ 📂vpc 
-┣ 📜Jenkinsfile 
-┗ 📜README.md
+- **/environments**: Contains separate directories for each deployment environment, such as production and staging, allowing for isolated management and deployment.
+  - **production**: Production environment configurations.
+    - **karpenter**: Includes YAML configurations for Karpenter auto-scaling.
+      - **client1-karpenter.yaml**
+      - **client2-karpenter.yaml**
+    - **backend.tf**: Configuration for the Terraform backend.
+    - **client1.tfvars, client2.tfvars**: Variable files for different client configurations.
+    - **main.tf**: Main Terraform configuration file.
+    - **outputs.tf**: Output definitions for Terraform resources.
+    - **variables.tf**: Variable definitions for Terraform configurations.
+  - **staging**: Staging environment configurations, structured similarly to production.
+- **/modules**: Reusable Terraform modules for different AWS services.
+  - **alb**: Module for AWS Application Load Balancer.
+  - **cloudwatch**: Module for monitoring with AWS CloudWatch.
+  - **eks**: Module for Amazon Elastic Kubernetes Service setups.
+  - **elasticache**: Module for provisioning AWS ElastiCache instances.
+  - **monitoring**: General infrastructure monitoring configurations.
+  - **opensearch**: Module for deploying AWS OpenSearch.
+  - **rds**: Module for managing AWS RDS instances.
+  - **s3**: Module for handling Amazon S3 storage.
+  - **vpc**: Module for setting up AWS Virtual Private Cloud environments.
 
 
 ## Usage
